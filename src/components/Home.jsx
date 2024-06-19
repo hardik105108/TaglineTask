@@ -35,8 +35,8 @@ const Home = () => {
     Category: {},
   });
 
-  const handleCheckboxChange1 = (filterType, option) => {
-    setSelectedFilters1((prevState) => ({
+  const handleCheckboxChange = (setSelectedFilters) => (filterType, option) => {
+    setSelectedFilters((prevState) => ({
       ...prevState,
       [filterType]: {
         ...prevState[filterType],
@@ -44,17 +44,11 @@ const Home = () => {
       },
     }));
   };
+  
+  const handleCheckboxChange1 = handleCheckboxChange(setSelectedFilters1);
+  const handleCheckboxChange2 = handleCheckboxChange(setSelectedFilters2);
 
-  const handleCheckboxChange2 = (filterType, option) => {
-    setSelectedFilters2((prevState) => ({
-      ...prevState,
-      [filterType]: {
-        ...prevState[filterType],
-        [option]: !prevState[filterType][option],
-      },
-    }));
-  };
-
+  
   const filterData1 = (data) => {
     return data.filter((item) => {
       return (
